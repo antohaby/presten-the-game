@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+exec docker run --rm -it \
+ -w /app \
+ -v $PWD:/app \
+ -v ~/.composer:/tmp \
+ -v /etc/passwd:/etc/passwd:ro \
+ -v /etc/group:/etc/group:ro \
+ --user $(id -u):$(id -g) \
+ php:cli $@
